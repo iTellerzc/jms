@@ -3,6 +3,7 @@ package com.hongao.jms.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
@@ -27,8 +28,8 @@ public class HaJmsServiceImpl implements HaJmsService {
 	@Autowired
 	private JmsTemplate jmsTemplate;
 	
-	//@Autowired
-	//@Qualifier(value="jmsTopicTemplate")
+	@Autowired
+	@Qualifier(value="jmsTopicTemplate")
 	private JmsTemplate jmsTopicTemplate;
 	
 	@Autowired
