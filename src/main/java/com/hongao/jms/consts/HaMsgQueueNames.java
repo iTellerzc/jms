@@ -18,11 +18,18 @@ public class HaMsgQueueNames {
 	 */
 	public static final String REGISTER = "ha-register.queue";
 	
+	/**
+	 * 分润队列
+	 */
+	public static final String COMMISSION = "ha-commission.queue";
+	
 	public static String getHaQueueName(String msgType){
 		if(HaMsgTypes.TEST.equals(msgType)){
 			return TEST;
 		}else if(HaMsgTypes.REGISTER.equals(msgType)){
 			return REGISTER;
+		}else if(HaMsgTypes.COMMISSION.equals(msgType)){
+			return COMMISSION;
 		}
 		return null;
 	}

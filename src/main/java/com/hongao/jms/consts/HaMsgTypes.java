@@ -18,9 +18,15 @@ public class HaMsgTypes {
 	 */
 	public static final String REGISTER = "register";
 	
+	/**
+	 * 分润
+	 */
+	public static final String COMMISSION = "commission";
+	
 	public static boolean isLegal(String msgType){
 		return TEST.equals(msgType) 
-				|| REGISTER.equals(msgType);
+				|| REGISTER.equals(msgType)
+				|| COMMISSION.equals(msgType);
 	}
 	
 	private HaMsgTypes(){

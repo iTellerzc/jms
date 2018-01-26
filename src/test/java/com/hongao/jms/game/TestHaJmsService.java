@@ -38,4 +38,5 @@ public class TestHaJmsService extends HaGameJmsBaseTest{
 		haJmsMsg.setUserId(2L);
 		haJmsService.publishMsg(haJmsMsg);
 	}
+	
 }
