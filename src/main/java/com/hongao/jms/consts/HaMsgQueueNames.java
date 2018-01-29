@@ -21,7 +21,7 @@ public class HaMsgQueueNames {
 	/**
 	 * 分润队列
 	 */
-	public static final String COMMISSION = "ha-commission.queue";
+	public static final String COMMISSION = "ha-comission.queue";
 	
 	public static String getHaQueueName(String msgType){
 		if(HaMsgTypes.TEST.equals(msgType)){
