@@ -3,7 +3,7 @@ package com.hongao.jms.dto.event;
 import java.io.Serializable;
 
 /**
- * 事件
+ * 事件 topic
  * @author iTeller_zc
  *
  * @date 2017年12月11日 上午9:55:18
@@ -27,6 +27,7 @@ public class HaJmsEvent implements Serializable{
 	
 	/**
 	 * 事件类型
+	 * @see com.hongao.jms.const.HaEventTypes
 	 */
 	private String eventType;
 	

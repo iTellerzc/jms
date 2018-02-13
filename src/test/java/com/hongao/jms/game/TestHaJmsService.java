@@ -2,10 +2,11 @@ package com.hongao.jms.game;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import com.hongao.jms.consts.HaEventTypes;
 import com.hongao.jms.consts.HaMsgTypes;
 import com.hongao.jms.dto.base.HaJmsMsg;
 import com.hongao.jms.dto.base.TestHaJmsMsg;
+import com.hongao.jms.dto.event.HaJmsEvent;
 import com.hongao.jms.service.HaJmsService;
 import com.hongao.parent.exception.HaBizException;
 
@@ -39,4 +40,17 @@ public class TestHaJmsService extends HaGameJmsBaseTest{
 		haJmsService.publishMsg(haJmsMsg);
 	}
 	
+	@Test
+	public void testSendJmsTopic() throws HaBizException{
+		HaJmsEvent haJmsTopic = new HaJmsEvent();
+		haJmsTopic.setEventType(HaEventTypes.TEST);
+		haJmsTopic.setPartyId("01");
+		haJmsTopic.setUserId(1L);
+		haJmsService.publishTopic(haJmsTopic);
+	}
+	
+	@Test
+	public void testSleep() throws InterruptedException{
+		Thread.sleep(10000);
+	}
 }

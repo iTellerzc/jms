@@ -19,4 +19,22 @@
     	<jms:listener destination="ha-test.queue" ref="testMessageListener" />
     </jms:listener-container>
    
+   <!-- topic监听器 -->
+   <bean id="testTopicListener" class="com.hongao.jms.listener.TestTopicListener"></bean>	
+	
+   <!-- topic消息监听容器 -->
+   <jms:listener-container acknowledge="auto" destination-type="topic" 
+   	connection-factory="connectionFactory" container-type="default">
+   		<jms:listener destination="ha-test.topic" ref="testTopicListener"/>
+   </jms:listener-container>
+   
+   <!-- topic监听器 -->
+   <bean id="testTopicListener2" class="com.hongao.jms.listener.TestTopicListener2"></bean>	
+	
+   <!-- topic消息监听容器 -->
+   <jms:listener-container acknowledge="auto" destination-type="topic" 
+   	connection-factory="connectionFactory" container-type="default">
+   		<jms:listener destination="ha-test.topic" ref="testTopicListener2"/>
+   </jms:listener-container>
+   
 </beans>  

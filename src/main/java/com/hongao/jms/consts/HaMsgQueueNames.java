@@ -6,6 +6,7 @@ package com.hongao.jms.consts;
  *
  * @date 2017年12月11日 下午1:47:23
  */
+@Deprecated
 public class HaMsgQueueNames {
 	
 	/**

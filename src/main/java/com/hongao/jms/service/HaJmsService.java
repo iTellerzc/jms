@@ -1,6 +1,7 @@
 package com.hongao.jms.service;
 
 import com.hongao.jms.dto.base.HaJmsMsg;
+import com.hongao.jms.dto.event.HaJmsEvent;
 import com.hongao.parent.exception.HaBizException;
 
 /**
@@ -17,5 +18,12 @@ public interface HaJmsService {
 	 * @throws HaBizException
 	 */
 	public void publishMsg(HaJmsMsg haJmsMsg) throws HaBizException;
+	
+	/**
+	 * 发布订阅消息
+	 * @param haJmsEvent
+	 * @throws HaBizException
+	 */
+	public void publishTopic(HaJmsEvent haJmsEvent) throws HaBizException;
 	
 }

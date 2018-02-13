@@ -25,6 +25,7 @@
         <property name="connectionFactory" ref="connectionFactory"/>  
         <property name="messageConverter" ref="haMessageConvetor"></property>
         <property name="pubSubDomain" value="true"></property>
+        <property name="deliveryMode" value="2"></property>
     </bean>  
     
     <bean id="haMessageConvetor" class="com.hongao.jms.convetor.HaMessageConvetor"></bean>

@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.hongao.jms.consts.ErrorCodes;
 import com.hongao.jms.consts.HaMsgTypes;
 import com.hongao.jms.dto.base.HaJmsMsg;
+import com.hongao.jms.dto.event.HaJmsEvent;
 import com.hongao.jms.selector.HaMsgSelector;
 import com.hongao.jms.service.HaJmsService;
 import com.hongao.parent.exception.HaBizException;
@@ -38,10 +39,6 @@ public class HaJmsServiceImpl implements HaJmsService {
 	@Override
 	public void publishMsg(HaJmsMsg haJmsMsg) throws HaBizException {
 		logger.info("send msg:{}", JSONObject.toJSONString(haJmsMsg));
-		if(!HaMsgTypes.isLegal(haJmsMsg.getMsgType())){
-			logger.error("not supported msgType={}!", haJmsMsg.getMsgType());
-			throw new HaBizException(ErrorCodes.NOT_SUPPORTED_MSG_TYPE, "not supported msgType!");
-		}
 		jmsTemplate.convertAndSend(haMsgSelector.select(haJmsMsg.getMsgType()), haJmsMsg);
 //		jmsTemplate.send(destination, new MessageCreator() {
 //			
@@ -50,6 +47,12 @@ public class HaJmsServiceImpl implements HaJmsService {
 //				return session.createObjectMessage(haJmsMsg);
 //			}
 //		});
+	}
+
+	@Override
+	public void publishTopic(HaJmsEvent haJmsEvent) throws HaBizException {
+		logger.info("send topic:{}", JSONObject.toJSONString(haJmsEvent));
+		jmsTopicTemplate.convertAndSend(haMsgSelector.selectTopic(haJmsEvent.getEventType()), haJmsEvent);
 	}
 
 }
