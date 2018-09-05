@@ -44,11 +44,10 @@ public class HaMsgSelector {
 	 * @param msgType
 	 * @return
 	 */
-	public synchronized String select(String msgType){
-		if(MSG_QUEUE_DESTINATION_CACHE.get(msgType) == null){
-			MSG_QUEUE_DESTINATION_CACHE.put(msgType, PREFIX + msgType + QUEUE_SUFFIX);
-		}
-		return MSG_QUEUE_DESTINATION_CACHE.get(msgType);
+	public String select(String msgType){
+		String queueName = PREFIX + msgType + QUEUE_SUFFIX;
+		MSG_QUEUE_DESTINATION_CACHE.putIfAbsent(msgType, queueName);
+		return queueName;
 	}
 	
 	/**
@@ -56,10 +55,9 @@ public class HaMsgSelector {
 	 * @param msgType
 	 * @return
 	 */
-	public synchronized String selectTopic(String eventType){
-		if(MSG_TOPIC_DESTINATION_CACHE.get(eventType) == null){
-			MSG_TOPIC_DESTINATION_CACHE.put(eventType, PREFIX + eventType + TOPIC_SUFFIX);
-		}
-		return MSG_TOPIC_DESTINATION_CACHE.get(eventType);
+	public String selectTopic(String eventType){
+		String topicName = PREFIX + eventType + TOPIC_SUFFIX;
+		MSG_TOPIC_DESTINATION_CACHE.putIfAbsent(eventType, topicName);
+		return topicName;
 	}
 }
